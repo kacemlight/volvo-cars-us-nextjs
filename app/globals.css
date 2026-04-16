@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+/* Custom Volvo branding */
+a {
+  @apply text-volvo-blue hover:text-volvo-lightblue transition-colors;
+}
+
+button {
+  @apply transition-colors duration-200;
+}

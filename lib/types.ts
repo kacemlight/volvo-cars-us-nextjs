@@ -1,77 +1,40 @@
-// TypeScript interfaces for all content types consumed by the homepage
+// TypeScript interfaces for AEM Content Fragments
+// These match the Volvo Cars US content model
 
-export interface HeroSection {
-  headline: string
-  subheadline: string
-  ctaLabel: string
-  ctaUrl: string
-  backgroundImageUrl: string
-  backgroundImageAlt: string
+export interface HeroBannerFragment {
+  title: string;
+  subtitle: string;
+  ctaText: string;
+  ctaLink: string;
+  backgroundImageUrl: string;
+}
+
+export interface CarModelCard {
+  id: string;
+  modelName: string;
+  modelDescription: string;
+  imageUrl: string;
+  learnMoreLink: string;
+  pricing?: string;
+}
+
+export interface PromotionalBanner {
+  heading: string;
+  description: string;
+  imageUrl: string;
+  ctaText: string;
+  ctaLink: string;
 }
 
 export interface NavigationItem {
-  label: string
-  url: string
-  isExternal: boolean
+  label: string;
+  href: string;
+  submenu?: NavigationItem[];
 }
 
-export interface CarModel {
-  modelName: string
-  tagline: string
-  price: string
-  imageUrl: string
-  imageAlt: string
-  ctaLabel: string
-  ctaUrl: string
-}
-
-export interface CarModelsSection {
-  sectionTitle: string
-  sectionDescription: string
-  models: CarModel[]
-}
-
-export interface Feature {
-  title: string
-  description: string
-  iconOrImageUrl: string
-  ctaLabel?: string
-  ctaUrl?: string
-}
-
-export interface FeatureHighlightsSection {
-  sectionTitle: string
-  sectionDescription: string
-  features: Feature[]
-}
-
-export interface FooterLink {
-  label: string
-  url: string
-}
-
-export interface FooterColumn {
-  columnTitle: string
-  links: FooterLink[]
-}
-
-export interface LegalLink {
-  label: string
-  url: string
-}
-
-export interface FooterSection {
-  columns: FooterColumn[]
-  copyrightText: string
-  legalLinks: LegalLink[]
-}
-
-export interface PageMeta {
-  pageTitle: string
-  metaDescription: string
-  ogImageUrl: string
-  canonicalUrl: string
-  keywords: string
-  language: string
-  robots: string
+export interface PageContent {
+  heroBanner: HeroBannerFragment;
+  carModels: CarModelCard[];
+  promotionalBanners: PromotionalBanner[];
+  navigation: NavigationItem[];
 }
