@@ -24,12 +24,23 @@ export interface PromotionalBanner {
   imageUrl: string;
   ctaText: string;
   ctaLink: string;
+  isDarkTheme?: boolean;
 }
 
 export interface NavigationItem {
   label: string;
   href: string;
   submenu?: NavigationItem[];
+}
+
+export interface FooterLink {
+  text: string;
+  href: string;
+}
+
+export interface FooterSection {
+  title: string;
+  links: FooterLink[];
 }
 
 export interface PageContent {

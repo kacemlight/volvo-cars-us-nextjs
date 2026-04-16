@@ -1,138 +1,135 @@
-// Mock content data — used when USE_AEM=false or when AEM returns null
-// Replace these with real AEM content fragments when AEM API is ready
+// Mock data for Volvo Cars US homepage
+// This data matches the AEM Content Fragment types and is used for development
+// Will be replaced with real AEM content fragment queries in production
 
-import type {
-  HeroSection,
-  CarModelsSection,
-  FeatureHighlightsSection,
-  FooterSection,
-  PageMeta,
-} from './types'
+import { PageContent, HeroBannerFragment, CarModelCard, PromotionalBanner, NavigationItem, FooterSection } from './types';
 
-export const pageMeta: PageMeta = {
-  pageTitle: 'Volvo Cars USA - Official Luxury Vehicles',
-  metaDescription: 'Discover Volvo Cars USA. Premium luxury SUVs and sedans with innovative safety and Swedish design.',
-  ogImageUrl: 'https://example.com/og-image.jpg',
-  canonicalUrl: 'https://www.volvocars.com/us/',
-  keywords: 'Volvo, luxury cars, SUV, sedan, safety, Swedish design',
-  language: 'en-US',
-  robots: 'index, follow',
-}
+export const mockNavigation: NavigationItem[] = [
+  { label: 'Models', href: '/models' },
+  { label: 'Build & Price', href: '/build' },
+  { label: 'Safety', href: '/safety' },
+  { label: 'Electrification', href: '/electrification' },
+  { label: 'About', href: '/about' },
+];
 
-export const heroSection: HeroSection = {
-  headline: 'Redefining Luxury. One Innovation at a Time.',
-  subheadline: 'Volvo Cars brings Swedish precision, innovative safety, and timeless design to the American road.',
-  ctaLabel: 'Explore Models',
-  ctaUrl: '#models',
-  backgroundImageUrl: 'https://example.com/hero-bg.jpg',
-  backgroundImageAlt: 'Volvo luxury sedan on open road',
-}
+export const mockHeroBanner: HeroBannerFragment = {
+  title: 'Welcome to Volvo Cars',
+  subtitle: 'Experience Swedish Safety and Innovation',
+  ctaText: 'Explore Our Models',
+  ctaLink: '#models',
+  backgroundImageUrl: 'https://images.unsplash.com/photo-1581274455760-6c2ca0e4ceef?w=1920&h=1080&fit=crop',
+};
 
-export const carModelsSection: CarModelsSection = {
-  sectionTitle: 'Our Models',
-  sectionDescription: 'Discover the complete lineup of Volvo luxury vehicles. Each model combines innovation with Swedish heritage.',
-  models: [
-    {
-      modelName: 'XC90',
-      tagline: 'Premium 3-Row Luxury SUV',
-      price: 'Starting at $65,900',
-      imageUrl: 'https://example.com/xc90.jpg',
-      imageAlt: 'Volvo XC90 luxury SUV',
-      ctaLabel: 'Explore XC90',
-      ctaUrl: 'https://www.volvocars.com/us/models/xc90',
-    },
-    {
-      modelName: 'XC60',
-      tagline: 'Midsize Luxury SUV',
-      price: 'Starting at $45,300',
-      imageUrl: 'https://example.com/xc60.jpg',
-      imageAlt: 'Volvo XC60 luxury SUV',
-      ctaLabel: 'Explore XC60',
-      ctaUrl: 'https://www.volvocars.com/us/models/xc60',
-    },
-    {
-      modelName: 'S90',
-      tagline: 'Luxury Sedan',
-      price: 'Starting at $52,400',
-      imageUrl: 'https://example.com/s90.jpg',
-      imageAlt: 'Volvo S90 luxury sedan',
-      ctaLabel: 'Explore S90',
-      ctaUrl: 'https://www.volvocars.com/us/models/s90',
-    },
-  ],
-}
+export const mockCarModels: CarModelCard[] = [
+  {
+    id: 'xc90',
+    modelName: 'XC90',
+    modelDescription: 'Premium three-row luxury SUV with innovative safety features',
+    imageUrl: 'https://images.unsplash.com/photo-1489824904134-891ab64532f1?w=500&h=400&fit=crop',
+    learnMoreLink: '/models/xc90',
+    pricing: 'Starting at $60,545',
+  },
+  {
+    id: 'xc60',
+    modelName: 'XC60',
+    modelDescription: 'Midsize luxury SUV blending performance with sustainability',
+    imageUrl: 'https://images.unsplash.com/photo-1605559424843-9e4c3dec1806?w=500&h=400&fit=crop',
+    learnMoreLink: '/models/xc60',
+    pricing: 'Starting at $47,245',
+  },
+  {
+    id: 'xc40',
+    modelName: 'XC40',
+    modelDescription: 'Compact luxury SUV designed for the modern driver',
+    imageUrl: 'https://images.unsplash.com/photo-1590362891990-f8ddb41d3fcb?w=500&h=400&fit=crop',
+    learnMoreLink: '/models/xc40',
+    pricing: 'Starting at $36,995',
+  },
+  {
+    id: 's90',
+    modelName: 'S90',
+    modelDescription: 'Luxury sedan offering Scandinavian design and advanced safety',
+    imageUrl: 'https://images.unsplash.com/photo-1552820728-8ac41f1ce891?w=500&h=400&fit=crop',
+    learnMoreLink: '/models/s90',
+    pricing: 'Starting at $54,545',
+  },
+  {
+    id: 's60',
+    modelName: 'S60',
+    modelDescription: 'Midsize sedan combining elegance with innovative technology',
+    imageUrl: 'https://images.unsplash.com/photo-1606611283684-ace0b52a57ce?w=500&h=400&fit=crop',
+    learnMoreLink: '/models/s60',
+    pricing: 'Starting at $42,595',
+  },
+  {
+    id: 'c40',
+    modelName: 'C40 Recharge',
+    modelDescription: 'Fully electric performance SUV for the sustainable future',
+    imageUrl: 'https://images.unsplash.com/photo-1618045614684-f1d34bb94590?w=500&h=400&fit=crop',
+    learnMoreLink: '/models/c40-recharge',
+    pricing: 'Starting at $52,795',
+  },
+];
 
-export const featureHighlightsSection: FeatureHighlightsSection = {
-  sectionTitle: 'Why Volvo',
-  sectionDescription: 'Four pillars define the Volvo difference: safety, sustainability, innovation, and design.',
-  features: [
-    {
-      title: 'Uncompromising Safety',
-      description: 'Volvo has championed car safety for over 90 years. Our commitment ensures every model includes advanced safety systems.',
-      iconOrImageUrl: 'https://example.com/icon-safety.svg',
-    },
-    {
-      title: 'Sustainable Luxury',
-      description: 'We are committed to electrification. By 2030, all Volvo models will be fully electric.',
-      iconOrImageUrl: 'https://example.com/icon-sustainability.svg',
-    },
-    {
-      title: 'Innovation & Technology',
-      description: 'Seamless connectivity, autonomous driving capabilities, and intuitive infotainment.',
-      iconOrImageUrl: 'https://example.com/icon-innovation.svg',
-    },
-    {
-      title: 'Scandinavian Design',
-      description: 'Minimalist elegance meets premium craftsmanship. Every detail is thoughtfully considered.',
-      iconOrImageUrl: 'https://example.com/icon-design.svg',
-    },
-  ],
-}
+export const mockPromotionalBanners: PromotionalBanner[] = [
+  {
+    heading: 'Exceptional Financing Offers',
+    description: 'Get competitive rates and flexible terms on your next Volvo. Our summer sales event offers exclusive incentives on select models.',
+    imageUrl: 'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=800&h=400&fit=crop',
+    ctaText: 'View Current Offers',
+    ctaLink: '/promotions',
+  },
+  {
+    heading: 'Electrification Leadership',
+    description: 'Discover our commitment to a sustainable future. From hybrid to fully electric, explore our expanding electrified lineup.',
+    imageUrl: 'https://images.unsplash.com/photo-1560958089-b8a63c0f3585?w=800&h=400&fit=crop',
+    ctaText: 'Learn About Electric',
+    ctaLink: '/electrification',
+  },
+];
 
-export const footerSection: FooterSection = {
-  columns: [
-    {
-      columnTitle: 'Models',
-      links: [
-        { label: 'XC90', url: 'https://www.volvocars.com/us/models/xc90' },
-        { label: 'XC60', url: 'https://www.volvocars.com/us/models/xc60' },
-        { label: 'S90', url: 'https://www.volvocars.com/us/models/s90' },
-        { label: 'View All', url: 'https://www.volvocars.com/us/models' },
-      ],
-    },
-    {
-      columnTitle: 'Company',
-      links: [
-        { label: 'About Volvo', url: 'https://www.volvocars.com/us/about' },
-        { label: 'Careers', url: 'https://careers.volvocars.com' },
-        { label: 'Press', url: 'https://www.volvocars.com/us/news' },
-        { label: 'Sustainability', url: 'https://www.volvocars.com/us/sustainability' },
-      ],
-    },
-    {
-      columnTitle: 'Support',
-      links: [
-        { label: 'Owner Portal', url: 'https://www.volvocars.com/us/owners' },
-        { label: 'Service Centers', url: 'https://www.volvocars.com/us/service' },
-        { label: 'Contact Us', url: 'https://www.volvocars.com/us/contact' },
-        { label: 'FAQ', url: 'https://www.volvocars.com/us/faq' },
-      ],
-    },
-    {
-      columnTitle: 'Connect',
-      links: [
-        { label: 'Facebook', url: 'https://facebook.com/VolvoCarUSA' },
-        { label: 'Instagram', url: 'https://instagram.com/VolvoCarUSA' },
-        { label: 'Twitter', url: 'https://twitter.com/VolvoCarUSA' },
-        { label: 'YouTube', url: 'https://youtube.com/VolvoCarUSA' },
-      ],
-    },
-  ],
-  copyrightText: '© 2026 Volvo Car USA, Inc. All rights reserved.',
-  legalLinks: [
-    { label: 'Privacy Policy', url: 'https://www.volvocars.com/us/privacy' },
-    { label: 'Terms of Service', url: 'https://www.volvocars.com/us/terms' },
-    { label: 'Cookie Policy', url: 'https://www.volvocars.com/us/cookies' },
-    { label: 'Accessibility', url: 'https://www.volvocars.com/us/accessibility' },
-  ],
-}
+export const mockFooterSections: FooterSection[] = [
+  {
+    title: 'Shop',
+    links: [
+      { text: 'Build & Price', href: '/build' },
+      { text: 'Models', href: '/models' },
+      { text: 'Used Vehicles', href: '/used' },
+      { text: 'Inventory', href: '/inventory' },
+    ],
+  },
+  {
+    title: 'Support',
+    links: [
+      { text: 'Owner Resources', href: '/owners' },
+      { text: 'Service & Parts', href: '/service' },
+      { text: 'Recalls & Updates', href: '/recalls' },
+      { text: 'Contact Us', href: '/contact' },
+    ],
+  },
+  {
+    title: 'Company',
+    links: [
+      { text: 'About Volvo', href: '/about' },
+      { text: 'Careers', href: '/careers' },
+      { text: 'Press', href: '/press' },
+      { text: 'Sustainability', href: '/sustainability' },
+    ],
+  },
+  {
+    title: 'Legal',
+    links: [
+      { text: 'Privacy Policy', href: '/privacy' },
+      { text: 'Terms of Use', href: '/terms' },
+      { text: 'Cookie Policy', href: '/cookies' },
+      { text: 'Sitemap', href: '/sitemap' },
+    ],
+  },
+];
+
+export const mockPageContent: PageContent = {
+  heroBanner: mockHeroBanner,
+  carModels: mockCarModels,
+  promotionalBanners: mockPromotionalBanners,
+  navigation: mockNavigation,
+};
