@@ -1,33 +1,68 @@
-// Promotional Banner component
 import { PromotionalBanner as PromotionalBannerType } from '@/lib/types';
 
 interface PromotionalBannerProps {
-  data: PromotionalBannerType;
+  promo: PromotionalBannerType;
 }
 
-export default function PromotionalBanner({ data }: PromotionalBannerProps) {
+export default function PromotionalBanner({ promo }: PromotionalBannerProps) {
+  // Determine text color based on theme - dark theme uses light text, light uses dark
+  const isDark = promo.isDarkTheme ?? false;
+  const textColorClass = isDark ? 'text-white' : 'text-gray-900';
+  const descriptionColorClass = isDark ? 'text-gray-100' : 'text-gray-600';
+  const ctaButtonClass = isDark
+    ? 'bg-white text-gray-900 hover:bg-gray-100'
+    : 'bg-volvo-blue text-white hover:bg-volvo-lightblue';
+
   return (
-    <section className="py-12 px-6 bg-white">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        {/* Image */}
-        <div className="order-2 md:order-1">
-          <img
-            src={data.imageUrl}
-            alt={data.heading}
-            className="w-full rounded-lg shadow-md"
-          />
-        </div>
-        
-        {/* Content */}
-        <div className="order-1 md:order-2">
-          <h2 className="text-3xl font-bold text-volvo-blue mb-4">{data.heading}</h2>
-          <p className="text-gray-600 text-lg mb-6">{data.description}</p>
-          <a
-            href={data.ctaLink}
-            className="inline-block bg-volvo-blue text-white px-8 py-3 rounded hover:bg-volvo-lightblue transition"
-          >
-            {data.ctaText}
-          </a>
+    <section
+      className={`relative w-full py-16 sm:py-20 lg:py-24 overflow-hidden ${
+        isDark ? 'bg-gray-900' : 'bg-white'
+      }`}
+    >
+      {/* Background image with overlay for visual depth */}
+      <div
+        className="absolute inset-0 opacity-20"
+        style={{
+          backgroundImage: `url('${promo.imageUrl}')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      />
+
+      {/* Content container with max width constraint */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          {/* Text content */}
+          <div>
+            {/* Promotional heading */}
+            <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 ${textColorClass}`}>
+              {promo.heading}
+            </h2>
+
+            {/* Promotional description */}
+            <p className={`text-lg leading-relaxed mb-8 ${descriptionColorClass}`}>
+              {promo.description}
+            </p>
+
+            {/* Call-to-action button */}
+            <a
+              href={promo.ctaLink}
+              className={`inline-block px-8 py-3 rounded font-semibold transition duration-300 hover:scale-105 transform ${
+                ctaButtonClass
+              }`}
+            >
+              {promo.ctaText}
+            </a>
+          </div>
+
+          {/* Promotional image (optional visual element) */}
+          <div className="hidden lg:block">
+            <img
+              src={promo.imageUrl}
+              alt={promo.heading}
+              className="w-full h-auto rounded-lg shadow-lg"
+            />
+          </div>
         </div>
       </div>
     </section>
