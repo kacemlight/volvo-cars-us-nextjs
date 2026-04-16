@@ -1,32 +1,40 @@
-// Car Model Card component - individual vehicle listing
 import { CarModelCard as CarModelCardType } from '@/lib/types';
 
 interface CarModelCardProps {
-  data: CarModelCardType;
+  model: CarModelCardType;
 }
 
-export default function CarModelCard({ data }: CarModelCardProps) {
+export default function CarModelCard({ model }: CarModelCardProps) {
   return (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition">
-      {/* Image */}
-      <div className="w-full h-64 bg-gray-200 overflow-hidden">
+    <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
+      {/* Image container with aspect ratio preservation */}
+      <div className="relative w-full pb-3/4 overflow-hidden bg-gray-100 group">
         <img
-          src={data.imageUrl}
-          alt={data.modelName}
-          className="w-full h-full object-cover hover:scale-105 transition duration-300"
+          src={model.imageUrl}
+          alt={model.modelName}
+          className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
       </div>
-      
-      {/* Content */}
-      <div className="p-6">
-        <h3 className="text-2xl font-bold text-volvo-blue mb-2">{data.modelName}</h3>
-        <p className="text-gray-600 mb-4">{data.modelDescription}</p>
-        {data.pricing && (
-          <p className="text-lg font-semibold text-gray-800 mb-4">{data.pricing}</p>
+
+      {/* Card content */}
+      <div className="p-6 flex flex-col flex-grow">
+        {/* Model name - bold heading */}
+        <h3 className="text-2xl font-bold text-gray-900 mb-2">{model.modelName}</h3>
+
+        {/* Model description - supporting copy */}
+        <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-grow">
+          {model.modelDescription}
+        </p>
+
+        {/* Pricing information */}
+        {model.pricing && (
+          <p className="text-volvo-blue font-semibold text-lg mb-4">{model.pricing}</p>
         )}
+
+        {/* Learn More CTA button - always at bottom */}
         <a
-          href={data.learnMoreLink}
-          className="inline-block bg-volvo-blue text-white px-6 py-2 rounded hover:bg-volvo-lightblue transition"
+          href={model.learnMoreLink}
+          className="inline-block px-6 py-2 border-2 border-volvo-blue text-volvo-blue hover:bg-volvo-blue hover:text-white transition duration-300 rounded font-semibold text-center"
         >
           Learn More
         </a>
