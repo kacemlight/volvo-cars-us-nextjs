@@ -1,33 +1,44 @@
-// Home page - main Volvo Cars US homepage
-import { fetchPageContent } from '@/lib/aem';
 import Navigation from '@/components/Navigation';
 import HeroBanner from '@/components/HeroBanner';
 import CarModelsGrid from '@/components/CarModelsGrid';
 import PromotionalBanner from '@/components/PromotionalBanner';
 import Footer from '@/components/Footer';
+import {
+  mockNavigation,
+  mockHeroBanner,
+  mockCarModels,
+  mockPromotionalBanners,
+  mockFooterSections,
+} from '@/lib/mockData';
 
-export default async function Home() {
-  // Fetch content from AEM (or mock data if not configured)
-  const content = await fetchPageContent();
-
+export default function Home() {
   return (
-    <main>
-      {/* Navigation */}
-      <Navigation items={content.navigation} />
+    <div className="flex flex-col min-h-screen bg-white">
+      {/* Navigation component - sticky at top */}
+      <Navigation items={mockNavigation} />
 
-      {/* Hero Banner */}
-      <HeroBanner data={content.heroBanner} />
+      {/* Main content container */}
+      <main className="flex-grow">
+        {/* Hero Banner - full viewport section */}
+        <HeroBanner banner={mockHeroBanner} />
 
-      {/* Car Models Section */}
-      <CarModelsGrid models={content.carModels} />
+        {/* Car Models Grid - responsive product showcase */}
+        <CarModelsGrid models={mockCarModels} />
 
-      {/* Promotional Banners */}
-      {content.promotionalBanners.map((banner, index) => (
-        <PromotionalBanner key={index} data={banner} />
-      ))}
+        {/* First Promotional Banner - full width promo section */}
+        <PromotionalBanner promo={mockPromotionalBanners[0]} />
 
-      {/* Footer */}
-      <Footer />
-    </main>
+        {/* Second Promotional Banner - alternate theme for visual variety */}
+        <PromotionalBanner
+          promo={{
+            ...mockPromotionalBanners[1],
+            isDarkTheme: true,
+          }}
+        />
+      </main>
+
+      {/* Footer - page bottom */}
+      <Footer sections={mockFooterSections} />
+    </div>
   );
 }
