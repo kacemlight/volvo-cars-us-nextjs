@@ -1,58 +1,51 @@
-import type { FooterSection } from '@/lib/types'
+// Footer component
+export default function Footer() {
+  const currentYear = new Date().getFullYear();
 
-interface FooterProps {
-  data: FooterSection
-}
-
-export default function FooterComponent({ data }: FooterProps) {
   return (
-    <footer className="bg-volvo-blue text-white" aria-label="Footer">
-      <div className="max-w-6xl mx-auto px-6 md:px-12 py-12">
-        {/* Footer columns */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
-          {data.columns.map((column) => (
-            <div key={column.columnTitle}>
-              <h4 className="text-lg font-bold mb-4">
-                {column.columnTitle}
-              </h4>
-              <ul className="space-y-2">
-                {column.links.map((link) => (
-                  <li key={link.label}>
-                    <a
-                      href={link.url}
-                      className="text-gray-200 hover:text-white transition-colors duration-200"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+    <footer className="bg-volvo-blue text-white py-12 px-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+          {/* Brand */}
+          <div>
+            <h3 className="text-xl font-bold mb-4">VOLVO CARS</h3>
+            <p className="text-gray-200">Swedish Safety and Innovation</p>
+          </div>
+          
+          {/* Links */}
+          <div>
+            <h4 className="font-bold mb-4">Models</h4>
+            <ul className="space-y-2 text-gray-200">
+              <li><a href="#" className="hover:text-white">XC90</a></li>
+              <li><a href="#" className="hover:text-white">XC60</a></li>
+              <li><a href="#" className="hover:text-white">S90</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 className="font-bold mb-4">Company</h4>
+            <ul className="space-y-2 text-gray-200">
+              <li><a href="#" className="hover:text-white">About</a></li>
+              <li><a href="#" className="hover:text-white">Careers</a></li>
+              <li><a href="#" className="hover:text-white">Contact</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 className="font-bold mb-4">Legal</h4>
+            <ul className="space-y-2 text-gray-200">
+              <li><a href="#" className="hover:text-white">Privacy</a></li>
+              <li><a href="#" className="hover:text-white">Terms</a></li>
+              <li><a href="#" className="hover:text-white">Sitemap</a></li>
+            </ul>
+          </div>
         </div>
-
-        {/* Divider */}
-        <div className="border-t border-volvo-accent my-8"></div>
-
-        {/* Copyright and legal */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-gray-200">
-            {data.copyrightText}
-          </p>
-          <ul className="flex flex-wrap justify-center md:justify-end gap-6">
-            {data.legalLinks.map((link) => (
-              <li key={link.label}>
-                <a
-                  href={link.url}
-                  className="text-sm text-gray-200 hover:text-white transition-colors duration-200"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
+        
+        {/* Copyright */}
+        <div className="border-t border-volvo-lightblue pt-8 text-center text-gray-200">
+          <p>&copy; {currentYear} Volvo Cars. All rights reserved.</p>
         </div>
       </div>
     </footer>
-  )
+  );
 }
